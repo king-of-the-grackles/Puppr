@@ -1,4 +1,4 @@
-# AfterBark (Puppr)
+# Puppr
 
 **AI-Powered Dog Dating Swipe App** - A playful rapid prototype demo application
 
@@ -7,7 +7,7 @@
 
 ## Overview
 
-AfterBark (aka "Puppr") is a proof-of-concept application that combines dating app mechanics with AI-generated dog personality profiles. Users swipe through randomly generated dog profiles, each with unique personalities created by Claude AI, providing an engaging and entertaining experience.
+Puppr is a proof-of-concept application that combines dating app mechanics with AI-generated dog personality profiles. Users swipe through randomly generated dog profiles, each with unique personalities created by Claude AI, providing an engaging and entertaining experience.
 
 **Current Status:** 🚧 Specification Phase - Implementation pending
 
@@ -47,7 +47,7 @@ AfterBark (aka "Puppr") is a proof-of-concept application that combines dating a
 ## Project Structure
 
 ```
-AfterBark/
+Puppr/
 ├── .env.sample          # Environment variable template
 ├── specs/               # Project specifications
 │   └── mvp-specification.md
@@ -71,8 +71,8 @@ AfterBark/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR-USERNAME/AfterBark.git
-   cd AfterBark
+   git clone https://github.com/YOUR-USERNAME/Puppr.git
+   cd Puppr
    ```
 
 2. Copy the environment template:

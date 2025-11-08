@@ -1,6 +1,6 @@
-# AfterBark - MVP Specification
+# Puppr - MVP Specification
 
-**Project Name:** AfterBark (aka "Puppr")
+**Project Name:** Puppr
 **Type:** Rapid Prototype Demo Application
 **Created:** 2025-11-07
 **Status:** Specification Phase
@@ -91,7 +91,7 @@ A playful dog dating swipe app that combines the addictive mechanics of dating a
 ### 3.2 Project Structure
 
 ```
-afterbark/
+puppr/
 ├── client/                      # React frontend
 │   ├── public/
 │   │   └── index.html
@@ -215,7 +215,7 @@ interface QueueStatus {
 
 **Liked Dogs:**
 ```typescript
-// Key: 'afterbark_likes'
+// Key: 'puppr_likes'
 interface LikedDogs {
   dogs: DogProfile[];            // Array of liked dog profiles
   lastUpdated: number;           // Timestamp
@@ -224,7 +224,7 @@ interface LikedDogs {
 
 **Statistics:**
 ```typescript
-// Key: 'afterbark_stats'
+// Key: 'puppr_stats'
 interface UserStats {
   totalSeen: number;             // Total dogs viewed
   totalLikes: number;            // Total right swipes
@@ -460,7 +460,7 @@ Background Process:
 
 **Story 1: First-time User**
 ```
-- User opens AfterBark
+- User opens Puppr
 - Sees brief loading state (2-3 seconds)
 - Queue loads 5 dogs in background
 - First dog card appears with profile
@@ -1060,7 +1060,11 @@ queueManager.queue.forEach(dog => preloadImage(dog.imageUrl));
 
 ## 11. Future Enhancements (Post-MVP)
 
-### 11.1 Short-term (v1.1)
+### 11.1 v1.1: Enhanced UX
+- [ ] Add gesture library (react-spring/framer-motion)
+- [ ] Smooth drag-to-swipe
+- [ ] Advanced animations
+- [ ] Gradient overlays
 - [ ] Super like feature (favorite breeds)
 - [ ] Undo last swipe
 - [ ] Keyboard shortcuts (arrow keys, space)
@@ -1070,15 +1074,42 @@ queueManager.queue.forEach(dog => preloadImage(dog.imageUrl));
 - [ ] Accessibility: Use Dog.CEO alt tags beta feature for screen readers
 - [ ] Breed-specific mode: Filter to show only certain breeds
 
-### 11.2 Medium-term (v1.5)
-- [ ] User accounts with persistent storage
-- [ ] Daily dog limit (gamification)
-- [ ] Achievement system (badges)
+### 11.2 v1.2: Background Queue
+- [ ] 5-dog buffer system
+- [ ] Parallel profile generation
+- [ ] Automatic refilling
+- [ ] Image preloading
+- [ ] Queue memory management
+- [ ] Advanced prefetching logic
+
+### 11.3 v1.3: Statistics Dashboard
+- [ ] Total dogs viewed
+- [ ] Favorite breed tracking
+- [ ] Swipe percentages
+- [ ] Time spent
+- [ ] Daily/weekly activity graphs
 - [ ] Compare stats with friends
+- [ ] Achievement system (badges)
+
+### 11.4 v1.4: Persistent Storage
+- [ ] Database backend
+- [ ] User accounts
+- [ ] Cross-device sync
+- [ ] Match history
+- [ ] Daily dog limit (gamification)
 - [ ] Custom profile generation (adjust humor level)
 - [ ] Breed information page (educational)
 
-### 11.3 Long-term (v2.0)
+### 11.5 v1.5: Advanced Features
+- [ ] React Router navigation
+- [ ] Breed filtering
+- [ ] Super like feature
+- [ ] Share profiles
+- [ ] Dark mode
+- [ ] Multiple views/routes
+- [ ] URL-based navigation
+
+### 11.6 v2.0: Long-term Vision
 - [ ] Match users with similar breed preferences
 - [ ] Connect with local shelters (real adoption)
 - [ ] Mobile app (React Native)
