@@ -11,7 +11,7 @@
 ## Overview
 
 ### 1.1 Concept
-A playful dog dating swipe app that combines the addictive mechanics of dating apps (like Tinder) with AI-generated personality profiles for dogs. Users swipe through random dog images pulled from the Dog.CEO API, with each dog having a unique, AI-generated dating profile based on their breed characteristics.
+A playful dog dating swipe app that combines the addictive mechanics of dating apps (like Tinder) but with profiles for dogs. Users swipe through random dog images pulled from the Dog.CEO API, with each dog having a unique, AI-generated dating profile based on their breed characteristics.
 
 **Key Simplifications:**
 - Sequential profile generation (not parallel)
@@ -550,29 +550,26 @@ Keep the tone light and playful.
 **Enhanced User Prompt Template:**
 ```typescript
 function createProfilePrompt(breed) {
-  return `Create a dating profile for a ${breed} dog.
+  return `Generate a creative dating profile for a ${breed} dog.
 
-IMPORTANT: Return ONLY valid JSON. No markdown, no code blocks, no explanations.
+BASE YOUR PROFILE ON REAL ${breed.toUpperCase()} BREED CHARACTERISTICS.
 
-Generate a profile with these exact fields:
-- name: A creative, fitting name (string)
-- age: Age between 1-10 (number)
-- bio: A witty 2-3 sentence bio that captures this breed's personality (string)
-- interests: Array of exactly 3-4 interests based on breed characteristics (string array)
-- lookingFor: A humorous "looking for" statement (string)
-- traits: Array of exactly 3 personality traits typical of the breed (string array)
+OUTPUT FORMAT: Respond with ONLY a JSON object. No markdown code blocks, no explanations, no additional text.
 
-Example format (DO NOT copy this content, create original content for ${breed}):
+REQUIRED JSON STRUCTURE:
 {
-  "name": "Charlie",
-  "age": 4,
-  "bio": "Athletic golden boy who believes every stranger is just a friend they haven't met yet. Professional ball enthusiast with a PhD in Good Boy Studies.",
-  "interests": ["Swimming", "Fetching", "Making friends", "Belly rubs"],
-  "lookingFor": "Someone who throws the ball... and then throws it again",
-  "traits": ["Loyal", "Energetic", "Friendly"]
+  "name": "string - A creative, breed-appropriate name",
+  "age": "number - Between 1 and 10",
+  "bio": "string - 2-3 witty sentences capturing breed personality",
+  "interests": ["string", "string", "string", "string"] - Exactly 4 items based on breed traits,
+  "lookingFor": "string - Humorous relationship goal statement",
+  "traits": ["string", "string", "string"] - Exactly 3 personality traits
 }
 
-Now create a unique, creative profile for a ${breed}.`;
+EXAMPLE OUTPUT (different breed - create unique content for ${breed}):
+{"name":"Charlie","age":4,"bio":"Athletic golden boy who believes every stranger is just a friend they haven't met yet. Professional ball enthusiast with a PhD in Good Boy Studies.","interests":["Swimming","Fetching","Making friends","Belly rubs"],"lookingFor":"Someone who throws the ball... and then throws it again","traits":["Loyal","Energetic","Friendly"]}
+
+NOW CREATE A UNIQUE PROFILE FOR A ${breed}:`;
 }
 ```
 
@@ -633,6 +630,7 @@ async function generateProfile(breed) {
       model: 'claude-haiku-4-5-20250929',
       max_tokens: 400,        // Sufficient for JSON profile
       temperature: 0.9,       // High creativity for variety
+      system: 'You are a creative copywriter specializing in humorous dating profiles. You create witty, engaging profiles for dogs based on their breed characteristics. Always respond with valid JSON only.',
       messages: [
         {
           role: 'user',
@@ -642,7 +640,16 @@ async function generateProfile(breed) {
     });
 
     // Extract text from response
-    const responseText = message.content[0].text;
+    let responseText = message.content[0].text.trim();
+
+    // CRITICAL: Strip markdown code blocks if present
+    // Claude sometimes wraps JSON in ```json...``` which breaks JSON.parse()
+    if (responseText.startsWith('```')) {
+      responseText = responseText
+        .replace(/^```json?\s*\n?/, '')  // Remove opening ```json or ```
+        .replace(/\n?```\s*$/, '')        // Remove closing ```
+        .trim();
+    }
 
     // Parse JSON response
     const profile = JSON.parse(responseText);
@@ -1492,6 +1499,7 @@ async function generateProfile(breed) {
     model: 'claude-haiku-4-5-20250929',
     max_tokens: 400,
     temperature: 0.9,
+    system: 'You are a creative copywriter specializing in humorous dating profiles. You create witty, engaging profiles for dogs based on their breed characteristics. Always respond with valid JSON only.',
     messages: [
       {
         role: 'user',
@@ -1500,7 +1508,18 @@ async function generateProfile(breed) {
     ]
   });
 
-  const responseText = message.content[0].text;
+  // Extract text from response
+  let responseText = message.content[0].text.trim();
+
+  // CRITICAL: Strip markdown code blocks if present
+  // Claude sometimes wraps JSON in ```json...``` which breaks JSON.parse()
+  if (responseText.startsWith('```')) {
+    responseText = responseText
+      .replace(/^```json?\s*\n?/, '')  // Remove opening ```json or ```
+      .replace(/\n?```\s*$/, '')        // Remove closing ```
+      .trim();
+  }
+
   const profile = JSON.parse(responseText);
 
   validateProfile(profile);
@@ -1509,29 +1528,26 @@ async function generateProfile(breed) {
 }
 
 function createProfilePrompt(breed) {
-  return `Create a dating profile for a ${breed} dog.
+  return `Generate a creative dating profile for a ${breed} dog.
 
-IMPORTANT: Return ONLY valid JSON. No markdown, no code blocks, no explanations.
+BASE YOUR PROFILE ON REAL ${breed.toUpperCase()} BREED CHARACTERISTICS.
 
-Generate a profile with these exact fields:
-- name: A creative, fitting name (string)
-- age: Age between 1-10 (number)
-- bio: A witty 2-3 sentence bio that captures this breed's personality (string)
-- interests: Array of exactly 3-4 interests based on breed characteristics (string array)
-- lookingFor: A humorous "looking for" statement (string)
-- traits: Array of exactly 3 personality traits typical of the breed (string array)
+OUTPUT FORMAT: Respond with ONLY a JSON object. No markdown code blocks, no explanations, no additional text.
 
-Example format (DO NOT copy this content, create original content for ${breed}):
+REQUIRED JSON STRUCTURE:
 {
-  "name": "Charlie",
-  "age": 4,
-  "bio": "Athletic golden boy who believes every stranger is just a friend they haven't met yet. Professional ball enthusiast with a PhD in Good Boy Studies.",
-  "interests": ["Swimming", "Fetching", "Making friends", "Belly rubs"],
-  "lookingFor": "Someone who throws the ball... and then throws it again",
-  "traits": ["Loyal", "Energetic", "Friendly"]
+  "name": "string - A creative, breed-appropriate name",
+  "age": "number - Between 1 and 10",
+  "bio": "string - 2-3 witty sentences capturing breed personality",
+  "interests": ["string", "string", "string", "string"] - Exactly 4 items based on breed traits,
+  "lookingFor": "string - Humorous relationship goal statement",
+  "traits": ["string", "string", "string"] - Exactly 3 personality traits
 }
 
-Now create a unique, creative profile for a ${breed}.`;
+EXAMPLE OUTPUT (different breed - create unique content for ${breed}):
+{"name":"Charlie","age":4,"bio":"Athletic golden boy who believes every stranger is just a friend they haven't met yet. Professional ball enthusiast with a PhD in Good Boy Studies.","interests":["Swimming","Fetching","Making friends","Belly rubs"],"lookingFor":"Someone who throws the ball... and then throws it again","traits":["Loyal","Energetic","Friendly"]}
+
+NOW CREATE A UNIQUE PROFILE FOR A ${breed}:`;
 }
 
 function validateProfile(profile) {
