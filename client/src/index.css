@@ -495,3 +495,97 @@ body {
   font-size: 18px;
   color: var(--text-light);
 }
+
+/* Mobile Optimizations */
+@media (max-width: 428px) {
+  /* Adjust dog card for mobile */
+  .dog-card {
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Reduce image height on mobile */
+  .dog-image-container {
+    height: 250px;
+  }
+
+  /* Improve profile scrolling area */
+  .dog-profile {
+    padding: 16px;
+    max-height: calc(100vh - var(--bottom-nav-height) - 250px - 100px);
+    overflow-y: auto;
+  }
+
+  /* Stack interests in single column for better readability */
+  .interests-list {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .interests-list li {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  /* Reduce spacing for mobile */
+  .profile-section {
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  /* Adjust bio text */
+  .bio {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Adjust looking-for text */
+  .looking-for {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Make traits wrap better */
+  .trait {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  /* Reduce action button size slightly */
+  .action-button {
+    height: 50px;
+    font-size: 15px;
+  }
+
+  .button-icon {
+    font-size: 18px;
+  }
+
+  .button-label {
+    font-size: 14px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 375px) {
+  .dog-image-container {
+    height: 220px;
+  }
+
+  .dog-profile {
+    padding: 14px;
+    max-height: calc(100vh - var(--bottom-nav-height) - 220px - 100px);
+  }
+
+  .dog-name {
+    font-size: 22px;
+  }
+
+  .profile-section {
+    margin-bottom: 10px;
+  }
+}
