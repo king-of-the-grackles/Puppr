@@ -9,7 +9,7 @@ export default function BottomNav({ activeView, onViewChange, likesCount }) {
         onClick={() => onViewChange('swipe')}
         aria-label="Swipe view"
       >
-        <span className="icon">=</span>
+        <span className="icon">🐕</span>
         <span className="label">Swipe</span>
       </button>
 
@@ -18,7 +18,7 @@ export default function BottomNav({ activeView, onViewChange, likesCount }) {
         onClick={() => onViewChange('gallery')}
         aria-label="Likes gallery"
       >
-        <span className="icon">d</span>
+        <span className="icon">❤️</span>
         <span className="label">Likes</span>
         {likesCount > 0 && (
           <span className="badge">{likesCount}</span>

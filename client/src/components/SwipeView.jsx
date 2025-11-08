@@ -21,7 +21,7 @@ export default function SwipeView({ currentDog, onSwipe, loading, error }) {
     return (
       <div className="swipe-view">
         <div className="error-state">
-          <p className="error-message">L {error}</p>
+          <p className="error-message">❌ {error}</p>
           <button
             className="retry-button"
             onClick={() => window.location.reload()}
@@ -67,7 +67,7 @@ export default function SwipeView({ currentDog, onSwipe, loading, error }) {
           aria-label="Pass"
           disabled={swipeDirection !== null}
         >
-          <span className="button-icon"></span>
+          <span className="button-icon">✖️</span>
           <span className="button-label">Pass</span>
         </button>
 
@@ -77,7 +77,7 @@ export default function SwipeView({ currentDog, onSwipe, loading, error }) {
           aria-label="Like"
           disabled={swipeDirection !== null}
         >
-          <span className="button-icon">d</span>
+          <span className="button-icon">❤️</span>
           <span className="button-label">Like</span>
         </button>
       </div>

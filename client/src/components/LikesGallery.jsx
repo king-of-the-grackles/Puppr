@@ -11,7 +11,7 @@ export default function LikesGallery({ likedDogs }) {
     return (
       <div className="likes-gallery">
         <div className="empty-state">
-          <p className="empty-message">No likes yet! Start swiping =</p>
+          <p className="empty-message">No likes yet! Start swiping 🐕</p>
         </div>
       </div>
     );
@@ -52,7 +52,7 @@ export default function LikesGallery({ likedDogs }) {
               onClick={() => setSelectedDog(null)}
               aria-label="Close"
             >
-              
+              ✖️
             </button>
             <DogCard dog={selectedDog} />
           </div>

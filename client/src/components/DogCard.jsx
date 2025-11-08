@@ -28,7 +28,7 @@ export default function DogCard({ dog, className = '' }) {
         </div>
 
         <div className="profile-section">
-          <h3 className="section-title">=¼ Interests</h3>
+          <h3 className="section-title">ðŸ’¼ Interests</h3>
           <ul className="interests-list">
             {profile.interests.map((interest, index) => (
               <li key={index}>{interest}</li>
@@ -37,12 +37,12 @@ export default function DogCard({ dog, className = '' }) {
         </div>
 
         <div className="profile-section">
-          <h3 className="section-title">=­ Looking for</h3>
+          <h3 className="section-title">ðŸ’­ Looking for</h3>
           <p className="looking-for">{profile.lookingFor}</p>
         </div>
 
         <div className="profile-section">
-          <h3 className="section-title">( Personality</h3>
+          <h3 className="section-title">âœ¨ Personality</h3>
           <div className="traits">
             {profile.traits.map((trait, index) => (
               <span key={index} className="trait">{trait}</span>
