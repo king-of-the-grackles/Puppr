@@ -69,7 +69,6 @@ body {
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
   overflow: hidden;
-  margin-bottom: 20px;
 }
 
 /* Card Animations */
@@ -106,12 +105,27 @@ body {
   height: 300px;
   overflow: hidden;
   background-color: #f0f0f0;
+  position: relative;
 }
 
 .dog-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* Action Buttons Overlay on Image */
+.dog-card-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  z-index: 10;
 }
 
 /* Dog Profile */
@@ -195,15 +209,6 @@ body {
 }
 
 /* Action Buttons */
-.action-buttons {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  padding: 0 20px;
-  width: 100%;
-  max-width: 400px;
-}
-
 .action-button {
   flex: 1;
   max-width: 160px;
@@ -501,7 +506,6 @@ body {
   /* Adjust dog card for mobile */
   .dog-card {
     max-width: 100%;
-    margin-bottom: 10px;
   }
 
   /* Reduce image height on mobile */
@@ -509,10 +513,16 @@ body {
     height: 250px;
   }
 
+  /* Adjust overlaid action buttons for mobile */
+  .dog-card-actions {
+    padding: 16px;
+    gap: 12px;
+  }
+
   /* Improve profile scrolling area */
   .dog-profile {
     padding: 16px;
-    max-height: calc(100vh - var(--bottom-nav-height) - 250px - 100px);
+    max-height: calc(100vh - var(--bottom-nav-height) - 250px - 80px);
     overflow-y: auto;
   }
 
@@ -574,6 +584,11 @@ body {
 @media (max-width: 375px) {
   .dog-image-container {
     height: 220px;
+  }
+
+  .dog-card-actions {
+    padding: 12px;
+    gap: 10px;
   }
 
   .dog-profile {

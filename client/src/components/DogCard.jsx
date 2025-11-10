@@ -1,7 +1,7 @@
 /**
  * DogCard - Display dog image with full profile
  */
-export default function DogCard({ dog, className = '' }) {
+export default function DogCard({ dog, className = '', onSwipe, swipeDirection }) {
   if (!dog) return null;
 
   const { imageUrl, breed, profile } = dog;
@@ -15,6 +15,30 @@ export default function DogCard({ dog, className = '' }) {
           className="dog-image"
           loading="lazy"
         />
+
+        {onSwipe && (
+          <div className="dog-card-actions">
+            <button
+              className="action-button pass-button"
+              onClick={() => onSwipe('left')}
+              aria-label="Pass"
+              disabled={swipeDirection !== null}
+            >
+              <span className="button-icon">✖️</span>
+              <span className="button-label">Pass</span>
+            </button>
+
+            <button
+              className="action-button like-button"
+              onClick={() => onSwipe('right')}
+              aria-label="Like"
+              disabled={swipeDirection !== null}
+            >
+              <span className="button-icon">❤️</span>
+              <span className="button-label">Like</span>
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="dog-profile">
@@ -36,10 +60,12 @@ export default function DogCard({ dog, className = '' }) {
           </ul>
         </div>
 
-        <div className="profile-section">
-          <h3 className="section-title">💭 Looking for</h3>
-          <p className="looking-for">{profile.lookingFor}</p>
-        </div>
+        {profile.lookingFor && (
+          <div className="profile-section">
+            <h3 className="section-title">💭 Looking for</h3>
+            <p className="looking-for">{profile.lookingFor}</p>
+          </div>
+        )}
 
         <div className="profile-section">
           <h3 className="section-title">✨ Personality</h3>

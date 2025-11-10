@@ -58,29 +58,12 @@ export default function SwipeView({ currentDog, onSwipe, loading, error }) {
 
   return (
     <div className="swipe-view">
-      <DogCard dog={currentDog} className={cardClassName} />
-
-      <div className="action-buttons">
-        <button
-          className="action-button pass-button"
-          onClick={() => handleSwipe('left')}
-          aria-label="Pass"
-          disabled={swipeDirection !== null}
-        >
-          <span className="button-icon">✖️</span>
-          <span className="button-label">Pass</span>
-        </button>
-
-        <button
-          className="action-button like-button"
-          onClick={() => handleSwipe('right')}
-          aria-label="Like"
-          disabled={swipeDirection !== null}
-        >
-          <span className="button-icon">❤️</span>
-          <span className="button-label">Like</span>
-        </button>
-      </div>
+      <DogCard
+        dog={currentDog}
+        className={cardClassName}
+        onSwipe={handleSwipe}
+        swipeDirection={swipeDirection}
+      />
     </div>
   );
 }
