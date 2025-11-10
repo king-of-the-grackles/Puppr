@@ -122,17 +122,16 @@ body {
   left: 0;
   right: 0;
   padding: 20px;
-  background: transparent;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.4) 70%, transparent 100%);
   display: flex;
   gap: 16px;
   justify-content: center;
   z-index: 10;
-  transform: translateY(38px);
 }
 
 /* Dog Profile */
 .dog-profile {
-  padding: 38px 20px 20px 20px;
+  padding: 20px;
   max-height: calc(100vh - var(--bottom-nav-height) - 400px - 80px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
@@ -519,12 +518,11 @@ body {
   .dog-card-actions {
     padding: 16px;
     gap: 12px;
-    transform: translateY(33px);
   }
 
   /* Improve profile scrolling area */
   .dog-profile {
-    padding: 34px 16px 16px 16px;
+    padding: 16px;
     max-height: calc(100vh - var(--bottom-nav-height) - 350px - 80px);
     overflow-y: auto;
   }
@@ -592,11 +590,10 @@ body {
   .dog-card-actions {
     padding: 12px;
     gap: 10px;
-    transform: translateY(33px);
   }
 
   .dog-profile {
-    padding: 30px 14px 14px 14px;
+    padding: 14px;
     max-height: calc(100vh - var(--bottom-nav-height) - 300px - 80px);
   }
 
