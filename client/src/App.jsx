@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import SwipeView from './components/SwipeView';
 import LikesGallery from './components/LikesGallery';
 import BottomNav from './components/BottomNav';
+import TopNav from './components/TopNav';
 import { fetchDog } from './services/api';
 import { loadLikes, saveLikes } from './services/storage';
 
@@ -158,6 +159,7 @@ function App() {
 
   return (
     <div className="app">
+      <TopNav />
       <div className="content-area">
         {view === 'swipe' ? (
           <SwipeView

@@ -13,6 +13,7 @@
   --mobile-min: 375px;
   --mobile-max: 428px;
   --bottom-nav-height: 50px;
+  --top-nav-height: 56px;
 }
 
 /* Global Reset */
@@ -42,9 +43,45 @@ body {
   background-color: var(--background);
 }
 
+/* Top Navigation */
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-width: var(--mobile-max);
+  margin: 0 auto;
+  height: var(--top-nav-height);
+  background: var(--nav-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-nav-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.top-nav-logo {
+  height: 32px;
+  width: auto;
+}
+
+.top-nav-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
 /* Content Area */
 .content-area {
-  height: calc(100vh - var(--bottom-nav-height) - env(safe-area-inset-bottom));
+  height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height) - env(safe-area-inset-bottom));
+  margin-top: var(--top-nav-height);
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -57,7 +94,7 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 40px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
   position: relative;
 }
 
@@ -133,7 +170,7 @@ body {
 /* Dog Profile */
 .dog-profile {
   padding: 20px;
-  max-height: calc(100vh - var(--bottom-nav-height) - 400px - 80px);
+  max-height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height) - 400px - 80px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -541,7 +578,7 @@ body {
   /* Improve profile scrolling area */
   .dog-profile {
     padding: 16px;
-    max-height: calc(100vh - var(--bottom-nav-height) - 350px - 80px);
+    max-height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height) - 350px - 80px);
     overflow-y: auto;
   }
 
@@ -612,7 +649,7 @@ body {
 
   .dog-profile {
     padding: 14px;
-    max-height: calc(100vh - var(--bottom-nav-height) - 300px - 80px);
+    max-height: calc(100vh - var(--top-nav-height) - var(--bottom-nav-height) - 300px - 80px);
   }
 
   .dog-name {
