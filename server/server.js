@@ -7,8 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+// Parse CORS_ORIGIN as array if it's a comma-separated string
+const corsOrigin = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',').map(origin => origin.trim())
+  : ['http://localhost:5173', 'http://localhost:5174'];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || ['http://localhost:5173', 'http://localhost:5174'],
+  origin: corsOrigin,
   credentials: true
 }));
 app.use(express.json());
