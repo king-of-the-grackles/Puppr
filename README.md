@@ -109,19 +109,6 @@ SDD treats the spec as the executable blueprint: describe the product crisply, t
 - [OpenAI Codex CLI](https://openai.com/codex/) – classic code-generation CLI with strong autocomplete; handy for quick script prototyping
 
 
-## Development Timeline
-
-| Phase | Time | Focus |
-| --- | --- | --- |
-| Spec development | ~2 hours | Pair with Claude Code to co-research requirements, evolve `mvp-specification` into the lean `rapid-prototype` spec |
-| Live coding | < 1 hour | Feed the refined spec to Claude, “one-shot” the full stack, and have the agent run the app + logs to fix build issues in real time |
-| Polish & QA | ~1 hour | Iterate on animations, spacing, mobile tweaks, and deployment readiness |
-
-- **“Built in under 1 hour”** refers to the live coding phase; total effort remained ~4 hours end-to-end.
-- Claude ran the dev servers in the background, reading logs and patching config issues without manual restarts.
-- UI polish and animation tweaks happened in a separate hour-long session after the initial build.
-- SDD + AI pairing kept implementation on-rails: clear intent meant minimal rework when Claude generated code.
-- Front-loaded thinking (spec + local docs) is what made the coding sprint feasible—less typing, more steering.
 
 ## Features
 
