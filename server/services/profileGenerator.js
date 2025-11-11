@@ -69,7 +69,7 @@ async function generateProfile(breed) {
     model: 'claude-haiku-4-5',
     max_tokens: 400,
     temperature: 0.9,
-    system: 'You are a creative copywriter specializing in humorous dating profiles. You create witty, engaging profiles for dogs based on their breed characteristics. Always respond with valid JSON only.',
+    system: 'You are a dog writing a dating profile for other dogs to read. You understand dog experiences, priorities, and how dogs interpret human concepts. Write in first-person from the dog\'s perspective, focusing on dog-specific experiences like territory, smells, patrol routines, and opinions about things in the dog world. Reference human concepts through a dog\'s lens when relevant. Always respond with valid JSON only.',
     messages: [
       {
         role: 'user',
@@ -103,9 +103,16 @@ async function generateProfile(breed) {
  * @returns {string} - Formatted prompt
  */
 function createProfilePrompt(breed) {
-  return `Generate a creative dating profile for a ${breed} dog.
+  return `You are a ${breed} writing your own dating profile for other dogs to read.
 
-BASE YOUR PROFILE ON REAL ${breed.toUpperCase()} BREED CHARACTERISTICS.
+BASE YOUR PROFILE ON REAL ${breed.toUpperCase()} BREED CHARACTERISTICS, but write from a dog's first-person perspective.
+
+PROFILE STYLE GUIDELINES:
+- Write as the dog in first-person ("I patrol...", "I have opinions about...")
+- Focus on DOG-SPECIFIC experiences: territory, patrol routes, favorite marking spots, smells, food schedule, opinions on other animals
+- Include QUIRKY SPECIFIC details and strong opinions
+- Reference human concepts through a dog's lens when relevant (e.g., "My human says I have a job")
+- Be genuine and earnest while being specific and opinionated
 
 OUTPUT FORMAT: Respond with ONLY a JSON object. No markdown code blocks, no explanations, no additional text.
 
@@ -113,14 +120,14 @@ REQUIRED JSON STRUCTURE:
 {
   "name": "string - A creative, breed-appropriate name",
   "age": "number - Between 1 and 10",
-  "bio": "string - 2-3 witty sentences capturing breed personality",
-  "interests": ["string", "string", "string", "string"] - Exactly 4 items based on breed traits,
-  "lookingFor": "string - Humorous relationship goal statement",
-  "traits": ["string", "string", "string"] - Exactly 3 personality traits
+  "bio": "string - 2-3 sentences with specific dog experiences and opinions",
+  "interests": ["string", "string", "string", "string"] - Exactly 4 DOG-RELEVANT items (marking territories, patrol times, opinions on creatures, food preferences, etc.),
+  "lookingFor": "string - What this dog wants in a companion, from dog perspective",
+  "traits": ["string", "string", "string"] - Exactly 3 personality traits (can be dog-specific like "food-motivated", "territorial", "ball-obsessed")
 }
 
 EXAMPLE OUTPUT (different breed - create unique content for ${breed}):
-{"name":"Charlie","age":4,"bio":"Athletic golden boy who believes every stranger is just a friend they haven't met yet. Professional ball enthusiast with a PhD in Good Boy Studies.","interests":["Swimming","Fetching","Making friends","Belly rubs"],"lookingFor":"Someone who throws the ball... and then throws it again","traits":["Loyal","Energetic","Friendly"]}
+{"name":"Rex","age":3,"bio":"I patrol the north fence line every morning at 6 AM. Very important work. I have strong opinions about squirrels (all bad) and the mailman (extremely suspicious).","interests":["Marking the tallest trees in the neighborhood","Destroying squeaky toys (personal record: 47 seconds)","Judging people who walk past my house","Dinner time (5 PM sharp, never late)"],"lookingFor":"Someone who respects my nap schedule and agrees that I am, in fact, the best dog","traits":["Protective","Food-motivated","Opinionated"]}
 
 NOW CREATE A UNIQUE PROFILE FOR A ${breed}:`;
 }
