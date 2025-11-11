@@ -19,6 +19,7 @@
     "dev:client": "npm run dev -w client"
   },
   "devDependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "sharp": "^0.34.5"
   }
 }
