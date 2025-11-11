@@ -58,6 +58,7 @@ export default function SwipeView({ currentDog, onSwipe, loading, isAutoRefetchi
   return (
     <div className="swipe-view">
       <DogCard
+        key={currentDog.id}
         dog={currentDog}
         className={cardClassName}
         onSwipe={handleSwipe}
