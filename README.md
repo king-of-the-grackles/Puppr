@@ -2,11 +2,27 @@
 
 ## A playful dog dating swipe app with AI-generated profiles
 
-<p align="center">
-  <img src="docs/screenshots/swipe-view.png" alt="Swipe View" width="250">
-  <img src="docs/screenshots/likes-gallery.png" alt="Likes Gallery" width="250">
-  <img src="docs/screenshots/loading.png" alt="Loading Animation" width="250">
-</p>
+<div align="center">
+  <table border="0">
+    <tr>
+      <td align="center">
+        <img src="docs/screenshots/swipe-view.png" alt="Swipe View" width="250">
+        <br>
+        <em>Swipe View</em>
+      </td>
+      <td align="center">
+        <img src="docs/screenshots/likes-gallery.png" alt="Likes Gallery" width="250">
+        <br>
+        <em>Likes Gallery</em>
+      </td>
+      <td align="center">
+        <img src="docs/screenshots/loading.png" alt="Loading Animation" width="250">
+        <br>
+        <em>Loading</em>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ## About Puppr
 
