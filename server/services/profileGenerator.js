@@ -1,3 +1,4 @@
+import '../loadEnv.js';
 import Anthropic from '@anthropic-ai/sdk';
 import { ProfileGenerationError } from '../errors.js';
 
@@ -65,7 +66,7 @@ export async function generateProfileWithRetry(breed, maxRetries = 3) {
  */
 async function generateProfile(breed) {
   const message = await client.messages.create({
-    model: 'claude-3-5-haiku-20241022',
+    model: 'claude-haiku-4-5',
     max_tokens: 400,
     temperature: 0.9,
     system: 'You are a creative copywriter specializing in humorous dating profiles. You create witty, engaging profiles for dogs based on their breed characteristics. Always respond with valid JSON only.',

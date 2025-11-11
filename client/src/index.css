@@ -502,6 +502,22 @@ body {
   color: var(--text-light);
 }
 
+/* Loading state spinner */
+.dog-spinner {
+  font-size: 64px;
+  margin-bottom: 20px;
+  animation: dogSpin 1s linear infinite;
+}
+
+@keyframes dogSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Mobile Optimizations */
 @media (max-width: 428px) {
   /* Adjust dog card for mobile */

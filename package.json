@@ -1,0 +1,24 @@
+{
+  "name": "puppr",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Root workspace for Puppr client and server",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "postinstall": "node scripts/postinstall.js",
+    "setup": "npm install && npm run build --workspaces --if-present",
+    "configure-env": "node scripts/configure-env.js",
+    "dev": "concurrently --names server,client,ready --prefix-colors cyan,magenta,gray \"npm run dev -w server\" \"npm run dev -w client -- --host 0.0.0.0\" \"node scripts/dev-ready.js\"",
+    "dev:server": "npm run dev -w server",
+    "dev:client": "npm run dev -w client"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

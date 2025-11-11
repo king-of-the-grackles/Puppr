@@ -85,7 +85,7 @@ A playful dog dating swipe app that combines the addictive mechanics of dating a
 - Node.js 20+
 - Express.js
 - `@anthropic-ai/sdk` (Anthropic TypeScript SDK)
-- **Claude Haiku 4.5** (`claude-haiku-4-5-20250929`)
+- **Claude Haiku 4.5** (`claude-haiku-4-5`)
 
 **External APIs:**
 - Dog.CEO API (https://dog.ceo/dog-api/)
@@ -590,7 +590,7 @@ npm install @anthropic-ai/sdk
 **Model Specifications:**
 ```typescript
 const HAIKU_4_5_CONFIG = {
-  model: 'claude-haiku-4-5-20250929',
+  model: 'claude-haiku-4-5',
   maxTokensLimit: 4096,        // Output token limit
   contextWindow: 200000,        // Input context window
   pricing: {
@@ -627,7 +627,7 @@ const client = new Anthropic({
 async function generateProfile(breed) {
   try {
     const message = await client.messages.create({
-      model: 'claude-haiku-4-5-20250929',
+      model: 'claude-haiku-4-5',
       max_tokens: 400,        // Sufficient for JSON profile
       temperature: 0.9,       // High creativity for variety
       system: 'You are a creative copywriter specializing in humorous dating profiles. You create witty, engaging profiles for dogs based on their breed characteristics. Always respond with valid JSON only.',
@@ -1496,7 +1496,7 @@ export async function generateProfileWithRetry(breed, maxRetries = 3) {
  */
 async function generateProfile(breed) {
   const message = await client.messages.create({
-    model: 'claude-haiku-4-5-20250929',
+    model: 'claude-haiku-4-5',
     max_tokens: 400,
     temperature: 0.9,
     system: 'You are a creative copywriter specializing in humorous dating profiles. You create witty, engaging profiles for dogs based on their breed characteristics. Always respond with valid JSON only.',
@@ -1961,7 +1961,7 @@ npm run dev
 - Local Docs: `/Users/chrisivester/Documents/mbp-obsidian-vault/02-Projects/software-projects/Puppr/ai-docs/anthropic-sdk-typescript`
 - Docs: https://docs.anthropic.com/
 - SDK: https://github.com/anthropics/anthropic-sdk-typescript
-- Models: Haiku 4.5 (`claude-haiku-4-5-20250929`)
+- Models: Haiku 4.5 (`claude-haiku-4-5`)
 
 **React Resources:**
 - Vite: https://vitejs.dev/

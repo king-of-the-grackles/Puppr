@@ -4,7 +4,7 @@ import DogCard from './DogCard';
 /**
  * SwipeView - Main swipe interface with Pass/Like buttons
  */
-export default function SwipeView({ currentDog, onSwipe, loading, error }) {
+export default function SwipeView({ currentDog, onSwipe, loading, isAutoRefetching, error }) {
   const [swipeDirection, setSwipeDirection] = useState(null);
 
   const handleSwipe = (direction) => {
@@ -33,25 +33,24 @@ export default function SwipeView({ currentDog, onSwipe, loading, error }) {
     );
   }
 
-  if (loading && !currentDog) {
+  // Show loading state (either initial load or auto-refetch)
+  if ((loading || isAutoRefetching) && !currentDog) {
+    const message = loading
+      ? "Sniffing out the best pups..."
+      : "Finding more dogs...";
+
     return (
       <div className="swipe-view">
         <div className="loading-state">
-          <div className="loading-spinner"></div>
-          <p>Finding your next match...</p>
+          <div className="dog-spinner">🐕</div>
+          <p>{message}</p>
         </div>
       </div>
     );
   }
 
   if (!currentDog) {
-    return (
-      <div className="swipe-view">
-        <div className="empty-state">
-          <p>No more dogs available</p>
-        </div>
-      </div>
-    );
+    return null; // Should not happen, but safety fallback
   }
 
   const cardClassName = swipeDirection ? `swiping-${swipeDirection}` : 'entering';
