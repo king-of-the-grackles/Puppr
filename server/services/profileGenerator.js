@@ -118,7 +118,7 @@ OUTPUT FORMAT: Respond with ONLY a JSON object. No markdown code blocks, no expl
 
 REQUIRED JSON STRUCTURE:
 {
-  "name": "string - A creative, breed-appropriate name",
+  "name": "string - A traditional dog name with personality (what their human calls them, breed-appropriate)",
   "age": "number - Between 1 and 10",
   "bio": "string - 2-3 sentences with specific dog experiences and opinions",
   "interests": ["string", "string", "string", "string"] - Exactly 4 DOG-RELEVANT items (marking territories, patrol times, opinions on creatures, food preferences, etc.),

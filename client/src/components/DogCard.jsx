@@ -1,10 +1,21 @@
+import { useEffect, useRef } from 'react';
+
 /**
  * DogCard - Display dog image with full profile
  */
 export default function DogCard({ dog, className = '', onSwipe, swipeDirection }) {
+  const profileRef = useRef(null);
+
   if (!dog) return null;
 
   const { imageUrl, breed, profile } = dog;
+
+  // Reset scroll position when a new dog loads
+  useEffect(() => {
+    if (profileRef.current) {
+      profileRef.current.scrollTop = 0;
+    }
+  }, [dog.id]);
 
   return (
     <div className={`dog-card ${className}`}>
@@ -41,7 +52,7 @@ export default function DogCard({ dog, className = '', onSwipe, swipeDirection }
         )}
       </div>
 
-      <div className="dog-profile">
+      <div className="dog-profile" ref={profileRef}>
         <div className="profile-header">
           <h2 className="dog-name">{profile.name}, {profile.age}</h2>
           <p className="dog-breed">{breed}</p>
