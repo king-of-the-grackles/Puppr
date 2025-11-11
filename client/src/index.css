@@ -462,6 +462,7 @@ body {
   justify-content: center;
   padding: 40px 20px;
   text-align: center;
+  margin: auto; /* Center vertically in flex-start parent */
 }
 
 .loading-spinner {
